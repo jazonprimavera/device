@@ -20,7 +20,7 @@
         $year = $r['year'];
         $color = $r['color'];
 
-        echo "<gadget>
+        echo "<new>
         <brand>$brand</brand>
         <cost>$cost</cost>
         <year>$year</year>
