@@ -5,7 +5,7 @@
  $content = $domOBJ->getElementsByTagName("device");
 ?>
 
- <h1>Gadgets</h1>
+ <h1>ads</h1>
 <ul>
  <h2>Laptop</h2>
  <li>cost: 35000</li>
