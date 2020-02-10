@@ -5,27 +5,7 @@
  $content = $domOBJ->getElementsByTagName("device");
 ?>
 
- <h1>Laptop: acer nitro 5</h1>
- <ul>
-<li>cost: 35000</h1>
-<li>color: black</li>
-</ul>
-<h2>Phone: Samsung ROG</h1>
- <ul>
-<li>cost: 35000</h1>
-<li>color: black</li>
-</ul>
-<h3>Phone: IPHONE X MAS</h3>
- <ul>
-<li>cost: 80000</h1>
-<li>color: black</li>
-</ul>
-<h4>Car: Toyota Hilux</h4>
- <ul>
-<li>cost: 2700000</h1>
-<li>color: white</li>
-</ul>
-
+ 
  <?php
  foreach( $content as $data )
  {?>
