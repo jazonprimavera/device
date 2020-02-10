@@ -6,6 +6,10 @@
 ?>
 
  <h1>Gadgets</h1>
+<ul>
+ <h2>Laptop</h2>
+ <li>cost: 35000</li>
+</ul>
 
  <?php
  foreach( $content as $data )
