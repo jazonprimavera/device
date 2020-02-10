@@ -5,11 +5,8 @@
  $content = $domOBJ->getElementsByTagName("device");
 ?>
 
- <h1>ads</h1>
-<ul>
- <h2>Laptop</h2>
- <li>cost: 35000</li>
-</ul>
+ <h1>Gadget</h1>
+
 
  <?php
  foreach( $content as $data )
