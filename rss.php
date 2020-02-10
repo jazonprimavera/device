@@ -1,6 +1,6 @@
 <?php
 $domOBJ = new DOMDocument();
-$domOBJ->load("https://app-pua.herokuapp.com/");
+$domOBJ->load("https://devicedata.herokuapp.com/");
 
 $content = $domOBJ->getElementsByTagName("item");
 
