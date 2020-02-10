@@ -6,6 +6,10 @@
 ?>
 
  <h1>Gadget</h1>
+<ul>Laptops</ul>
+<li>cost: 35000</li>
+<li>year: 2020</li>
+</ul>
 
 
  <?php
