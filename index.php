@@ -1,22 +1,33 @@
-
 <?php
-$domOBJ = new DOMDocument();
-$domOBJ->load("https://devicedata.herokuapp.com/");
+ $domOBJ = new DOMDocument();
+ $domOBJ->load("https://firstappanj.herokuapp.com//rss.php");//XML page URL
+ 
+ $content = $domOBJ->getElementsByTagName("Books");
+?>
 
-$content = $domOBJ->getElementsByTagName("item");
+ <h1>Books</h1>
 
-foreach ($content as $data) {
-
-    $username = $data->getElementsByTagName("username")->item(0)->nodeValue;
-    $email = $data->getElementsByTagName("email")->item(0)->nodeValue;
-    $address = $data->getElementsByTagName("address")->item(0)->nodeValue;
-    $contacts = $data->getElementsByTagName("contacts")->item(0)->nodeValue;
-
-    echo "
-    <ul>
-    <li>Username: <strong>$username</strong></li>
-    <li>Email: <strong>$email</strong></li>
-    <li>Address: <strong>$address</strong></li>
-    <li>Contacts: <strong>$contacts</strong></li>
-    </ul>";
-}
+ <?php
+ foreach( $content as $data )
+ {?>
+     <div class="border">
+     <?php
+     $Title = $data->getElementsByTagName("title")->item(0)->nodeValue;
+     $Author = $data->getElementsByTagName("author")->item(0)->nodeValue;
+     $Genre = $data->getElementsByTagName("genre")->item(0)->nodeValue;
+     $Date = $data->getElementsByTagName("date")->item(0)->nodeValue;
+     echo "<ul>
+            <h2>$Title</h2>
+              <ul>
+                  <li>Author: $Author </li>
+                  <li>Genre: $Genre </li>
+                  <li>Date Published: $Date </li>
+              </ul>
+          </ul>";
+    ?>
+     </div>
+  <?php
+ }
+?>
+</div>
+</div>
