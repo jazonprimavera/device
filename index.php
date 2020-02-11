@@ -1,26 +1,22 @@
+
 <?php
-header("Content-type: text/xml");
+$domOBJ = new DOMDocument();
+$domOBJ->load("https://devicedata.herokuapp.com/");
 
-$db_username = 'admin';
-$db_password = 'root1234';
-$db_hostname = 'dbrojasdev.cjw42bnplsor.us-east-1.rds.amazonaws.com';
-$db_port = '3306';
-$db_name = 'db_1820595';
+$content = $domOBJ->getElementsByTagName("item");
 
-$conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name);
-$q = "SELECT * FROM tbl_device";
-$r = mysqli_query($conn, $q);
+foreach ($content as $data) {
 
-echo "<?xml version='1.0' encoding='UTF-8'?>
-<data>";
+    $username = $data->getElementsByTagName("username")->item(0)->nodeValue;
+    $email = $data->getElementsByTagName("email")->item(0)->nodeValue;
+    $address = $data->getElementsByTagName("address")->item(0)->nodeValue;
+    $contacts = $data->getElementsByTagName("contacts")->item(0)->nodeValue;
 
-while ($item = mysqli_fetch_object($r)) {
-    echo "<item>
-    <username>$item->brand</username>
-    <email>$item->cost</email>
-    <address>$item->year</address>
-    <contacts>$item->color</contacts>
-    </item>";
+    echo "
+    <ul>
+    <li>Username: <strong>$username</strong></li>
+    <li>Email: <strong>$email</strong></li>
+    <li>Address: <strong>$address</strong></li>
+    <li>Contacts: <strong>$contacts</strong></li>
+    </ul>";
 }
-
-echo "</data>";
