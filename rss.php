@@ -15,16 +15,16 @@
     
     while($r = mysqli_fetch_array($q)){
 
-        $brand = $r['brand'];
-        $cost = $r['cost'];
-        $year = $r['year'];
-        $color = $r['color'];
+        $Brand = $r['brand'];
+        $Cost = $r['cost'];
+        $Year = $r['year'];
+        $Color = $r['color'];
 
         echo "<device>
-        <title>$brand</title>
-        <genre>$cost</genre>
-        <author>$year</author>
-        <date>$color</date>
+        <brand>$Brand</brand>
+        <cost>$Cost</cost>
+        <year>$Year</year>
+        <color>$Color</color>
         </device>";
     }
     echo "</channel></rss>";
