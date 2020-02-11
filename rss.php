@@ -1,26 +1,31 @@
-<?php
-header("Content-type: text/xml");
+<?php 
+    $conn = mysqli_connect("dbrojasdev.cjw42bnplsor.us-east-1.rds.amazonaws.com", "admin", "root1234") or die (mysqli_error($conn));
+    $db = mysqli_select_db($conn, "db_1820595");
 
-$db_username = 'admin';
-$db_password = 'root1234';
-$db_hostname = 'dbrojasdev.cjw42bnplsor.us-east-1.rds.amazonaws.com';
-$db_port = '3306';
-$db_name = 'db_1820595';
+    if(mysqli_connect_errno($conn)){
+        echo "Database connection failed!: ". mysqli_connect_errno();
+    }
+    $sql = "SELECT * FROM tbl_book ORDER BY BookID DESC";
+    $q = mysqli_query($conn, $sql);
 
-$conn = mysqli_connect($db_hostname, $db_username, $db_password, $db_name);
-$q = "SELECT * FROM tbl_device";
-$r = mysqli_query($conn, $q);
+    header("Content-type: text/xml");
 
-echo "<?xml version='1.0' encoding='UTF-8'?>
-<data>";
+    echo "<?xml version='1.0' encoding='UTF-8'?>
+        <rss version='2.0'><channel>";
+    
+    while($r = mysqli_fetch_array($q)){
 
-while ($item = mysqli_fetch_object($r)) {
-    echo "<item>
-    <username>$item->brand</username>
-    <email>$item->cost</email>
-    <address>$item->year</address>
-    <contacts>$item->color</contacts>
-    </item>";
-}
+        $brand = $r['brand'];
+        $cost = $r['cost'];
+        $year = $r['year'];
+        $color = $r['color'];
 
-echo "</data>";
+        echo "<device>
+        <title>$brand</title>
+        <genre>$cost</genre>
+        <author>$year</author>
+        <date>$color</date>
+        </device>";
+    }
+    echo "</channel></rss>";
+?>
